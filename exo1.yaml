@@ -1,0 +1,14 @@
+openapi: 3.0
+info:
+    title: API PING
+    description: DESCRIBE A SIMPLE "PING" API
+paths:
+    /ping:
+      get:
+        description: ok
+        response:
+            '200':
+                content:
+                    text/plain:
+                        type: string
+                        example: "pong"
