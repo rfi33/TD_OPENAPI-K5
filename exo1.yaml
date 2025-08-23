@@ -5,10 +5,11 @@ info:
 paths:
     /ping:
       get:
-        description: ok
+        summary: Return a simple "pong"
         response:
             '200':
-                content:
-                    text/plain:
-                        type: string
-                        example: "pong"
+              description: Successful
+              content:
+                text/plain:
+                  type: string
+                  example: "pong"
