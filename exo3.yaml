@@ -5,43 +5,73 @@ info:
 
 paths:
   /tasks:
-  get:
-    summary: Get all tasks
-    response:
-      '200':
-        description: List of task found
-        content:
-          application/json:
-            schema:
+    get:
+      summary: Get all tasks
+      responses:
+        '200':
+          description: List of task found
+          content:
+            application/json:
+              schema:
               type: array
               items:
-               $ref: '#/components/schemas/Task'
-              example:
+                $ref: '#/components/schemas/Task'
+                example:
                 - id: 1
                   title: "Faire les courses"
                   completed: false
                 - id: 2
                   title: "Faire le menage"
                   completed: false
+    post:
+      summary: Create new task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+             type: array
+             items:
+               $ref: '#/components/schemas/TaskInput'
+      responses:
+        '201':
+          description: Tasks successfully created
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
 
 
 components:
- schema:
-   task:
-     type: object
-     required:
-       - id
-       - title
-       - completed
-     properties:
-       id:
-         type: integer
-         example: 1
-       title:
-         type: string
-         example: "Faire les course"
-       completed:
-         type: boolean
-         example: false
-
-
+  schemas:
+    Task:
+      type: object
+      required:
+        - id
+        - title
+        - completed
+      properties:
+        id:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: "Faire les course"
+        completed:
+          type: boolean
+          example: false
+    TaskInput:
+      type: object
+      required:
+         - title
+      properties:
+        title:
+          type: string
+          description: Task title
+          example: "Faire la cuisine"
+        completed:
+          type: boolean
+          description: Task completion status
+          default: false
