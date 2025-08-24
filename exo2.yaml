@@ -1,61 +1,61 @@
 openapi: 3.0.3
 info:
-   title: User Management API
-   description: API to manage users with pagination
+  title: User Management API
+  description: API to manage users with pagination
 
 paths:
   /users:
-  get:
-    summary: Get the list of users
-    parameters:
-      - name:
-        in: query
-        description: Number page
-        required: false
-        schema:
-          type: integer
-          minimum: 1
-          default: 1
-      - name:
-        in: query
-        description: Number of users per page
-        required: false
-        schema:
-          type: integer
-          minimum: 1
-          default: 20
-    response:
-      '200':
-        description: List of users found
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    example: 1
-                  name:
-                    type: string
-                    example: "Alice"
-                  email:
-                    type: string
-                    example: "alice@example.com"
+    get:
+      summary: Get the list of users
+      parameters:
+        - name:
+          in: query
+          description: Number page
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name:
+          in: query
+          description: Number of users per page
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            default: 20
+      responses:
+        '200':
+          description: List of users found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    name:
+                      type: string
+                      example: "Alice"
+                    email:
+                      type: string
+                      example: "alice@example.com"
                   required:
                     - id
                     - name
                     - email
-      '400':
-        description: "Bad request: invalid parameters types"
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                error:
-                  type: string
-                  example: "Bad types for provided query parameters"
+        '400':
+          description: "Bad request: invalid parameters types"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Bad types for provided query parameters"
                 required:
                   - error
