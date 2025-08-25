@@ -1,0 +1,53 @@
+openapi: 3.0.3
+info:
+ title: Product search API
+
+paths:
+ /products:
+  get:
+   summary: search for products
+   parameters:
+   - $ref: '#/components/parameters/LimitParam'
+   - $ref: '#/components/parameters/SearchQueryParam'
+   responses:
+    '200':
+      description: List of products
+      content:
+       application/json:
+        schema:
+         type: array
+         items:
+         $ref: '#/components/schemas/Product'
+
+    '404':
+      description: product not found
+
+components:
+ schemas:
+  product:
+   type: objet
+   properties:
+    name:
+     type: string
+    expiration_datetime:
+     type: string
+     format: date-time
+    price: 
+     type: number
+     format: float
+parameters:
+ LimitParam:
+  name: limit
+  in: query 
+  description: Maximum number of product to return 
+  required: false
+  schema: 
+   type: integer
+ SearchQueryParam:
+  name: q
+  in: query
+  description: Search term
+  required: false
+  schema:
+   type: string
+   example: 'apple'
