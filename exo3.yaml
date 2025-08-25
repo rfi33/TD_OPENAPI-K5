@@ -42,6 +42,37 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Task'
+    delete:
+      summary: Delete multiple tasks by ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: integer
+      responses:
+        '200':
+          description: Tasks successfully deleted
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+        '404':
+          description: tasks not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Tasks not found
+
+
   /tasks/{id}:
     get:
       summary: Get the task with the specified id
