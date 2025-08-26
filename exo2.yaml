@@ -2,21 +2,22 @@ openapi: 3.0.3
 info:
   title: User Management API
   description: API to manage users with pagination
+  version: 1.0.0
 
 paths:
   /users:
     get:
       summary: Get the list of users
       parameters:
-        - name:
+        - name: page
           in: query
-          description: Number page
+          description: Page number (for pagination)
           required: false
           schema:
             type: integer
             minimum: 1
             default: 1
-        - name:
+        - name: limit
           in: query
           description: Number of users per page
           required: false
@@ -48,7 +49,7 @@ paths:
                     - name
                     - email
         '400':
-          description: "Bad request: invalid parameters types"
+          description:
           content:
             application/json:
               schema:
