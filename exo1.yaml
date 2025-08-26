@@ -1,15 +1,16 @@
-openapi: 3.0
+openapi: 3.1.0
 info:
-    title: API PING
-    description: DESCRIBE A SIMPLE "PING" API
+  title: API PING
+  description: DESCRIBE A SIMPLE "PING" API
+  version: 1.0.0
 paths:
-    /ping:
-      get:
-        summary: Return a simple "pong"
-        response:
-            '200':
-              description: Successful
-              content:
-                text/plain:
-                  type: string
-                  example: "pong"
+  /ping:
+    get:
+      summary: Return a simple "pong"
+      responses:
+        '200':
+          description: Successful
+          content:
+            text/plain:
+              type: string
+              example: "pong"
