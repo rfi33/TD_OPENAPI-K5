@@ -18,6 +18,18 @@ paths:
          type: array
          items:
          $ref: '#/components/schemas/Product'
+        example:
+         summary: Many products
+         value:
+          - name: "Lait Canfia 1L"
+            expiration_datetime: "2025-12-01T00:00:00"
+            price: 5000.00
+          - name: "Poire 1kg"
+            expiration_datetime: "2025-10-10T00:00:00"
+            price: 4999.99
+         epmtyList:
+          summary: No product found 
+          value: []
 
     '404':
       description: product not found
@@ -43,6 +55,11 @@ parameters:
   required: false
   schema: 
    type: integer
+   example:
+    defaultTime:
+     value: 10
+    smallTime:
+     value: 3
  SearchQueryParam:
   name: q
   in: query
@@ -50,4 +67,8 @@ parameters:
   required: false
   schema:
    type: string
-   example: 'apple'
+   example:
+    dairy:
+     value: "pomme"
+    empty:
+     value: ""
